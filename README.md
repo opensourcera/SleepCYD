@@ -1,4 +1,4 @@
-# SleepCYD
+# SleepCYD: Portable Sleep Analyzer for WatchPAT ONE
 
 SleepCYD turns a 10-dollar touch-screen board, the **Cheap Yellow Display** (ESP32-2432S028), into a bedside recorder
 for the **WatchPAT ONE** home sleep test sensor. The board finds the sensor over Bluetooth LE, stores the whole night on a
