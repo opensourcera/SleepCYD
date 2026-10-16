@@ -13,6 +13,13 @@ and reads the report over breakfast.
 > manufacturer's scoring and must not be used for diagnosis or treatment decisions. If you worry about your sleep, see a
 > doctor.
 
+## See it in action
+
+<a href="docs/videos/sleepcyd-demo.mp4"><img src="docs/videos/sleepcyd-demo-poster.jpg" alt="SleepCYD demo video: the patient screen, the name keyboard, the checklist and the night report on the Cheap Yellow Display" width="640"></a>
+
+A 1 minute 22 second walkthrough on the real board in demo mode: choosing the patient, entering a name on the touch
+keyboard, the checklist, and the report. Click the picture to play the video ([MP4, 720p](docs/videos/sleepcyd-demo.mp4)).
+
 ## Why this project exists
 
 The WatchPAT ONE is sold as a **single-use** sensor. You wear it for one night, the official phone app uploads the
