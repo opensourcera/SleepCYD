@@ -93,6 +93,25 @@ issue: every reused unit teaches something.
 
 ## How a night goes
 
+![The eight screens of a night: patient choice, new patient, turn on the WatchPAT, checklist, receiving data, end prompt, QR report, settings](docs/images/screens.svg)
+
+```mermaid
+flowchart TD
+    A["Who is sleeping tonight?"] -- New patient --> B["Remove the old recordings?"]
+    B --> C["Name"] --> D["Date of birth"] --> E["Turn on the WatchPAT<br/>(scanning, connects by itself)"]
+    A -- Same patient --> E
+    E --> F["Start sleep<br/>checklist, Start"]
+    F --> G["Receiving data<br/>all night, to the SD card"]
+    G -- "Stop, END OF TEST<br/>or link lost" --> H{"End the session?"}
+    H -- Continue --> G
+    H -- End --> I{"Wi-Fi configured?"}
+    I -- yes --> J["Night mode (restart without Bluetooth)<br/>analysis, upload to the site if set,<br/>phone page + QR code"]
+    I -- no --> K["Report on the screen"]
+    J -- Close --> A
+    K -- Close --> A
+    S(("gear")) -.-> T["Settings<br/>Patient, Wi-Fi, Nights, Device"]
+```
+
 1. **Who is sleeping tonight?** "New patient" or "Same patient: <name>". A gear in the top right corner of every screen
    opens Settings.
 2. New patient: an offer to remove the previous recordings from the card, then the name keyboard, then the date of birth.

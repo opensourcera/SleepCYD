@@ -1,0 +1,386 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='1400' height='612' viewBox='0 0 1400 612'>
+<rect x='0' y='0' width='1400' height='612' fill='#FFFFFF' rx='0' />
+<rect x='24' y='24' width='320' height='240' fill='#1C1E28' rx='0' stroke='#000' stroke-width='1'/>
+<rect x='24' y='24' width='320' height='34' fill='#12121A' rx='0' />
+<text x='34' y='46' font-size='16' fill='#FFFFFF' text-anchor='start' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>SleepCYD</text>
+<circle cx='322' cy='41' r='13' fill='#343848'/>
+<text x='322' y='47' font-size='16' fill='#FFFFFF' text-anchor='middle' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>⚙</text>
+<text x='36' y='82' font-size='16' fill='#FFFFFF' text-anchor='start' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>Who is sleeping tonight?</text>
+<rect x='36' y='96' width='296' height='50' fill='#0096E6' rx='8' />
+<text x='184.0' y='128.2' font-size='20' fill='#FFFFFF' text-anchor='middle' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>New patient</text>
+<rect x='36' y='156' width='296' height='50' fill='#3CC85A' rx='8' />
+<text x='184.0' y='188.2' font-size='20' fill='#000000' text-anchor='middle' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>Same patient:  Farjana</text>
+<text x='36' y='230' font-size='12' fill='#969BAA' text-anchor='start' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>Wi-Fi HomeNet  -  nights go to the site</text>
+<text x='24' y='284' font-size='14' fill='#333333' text-anchor='start' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>1  Who is sleeping tonight?</text>
+<rect x='368' y='24' width='320' height='240' fill='#1C1E28' rx='0' stroke='#000' stroke-width='1'/>
+<rect x='368' y='24' width='320' height='34' fill='#12121A' rx='0' />
+<text x='378' y='46' font-size='16' fill='#FFFFFF' text-anchor='start' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>New patient</text>
+<text x='380' y='84' font-size='16' fill='#FFFFFF' text-anchor='start' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>Remove all recordings from the card?</text>
+<text x='380' y='110' font-size='14' fill='#969BAA' text-anchor='start' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>3 files, 25.4 MB on the card.</text>
+<text x='380' y='128' font-size='14' fill='#969BAA' text-anchor='start' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>The previous patient's nights would be gone</text>
+<text x='380' y='146' font-size='14' fill='#969BAA' text-anchor='start' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>from this device (the site keeps its copies).</text>
+<rect x='380' y='162' width='140' height='46' fill='#E63C46' rx='8' />
+<text x='450.0' y='192.2' font-size='20' fill='#FFFFFF' text-anchor='middle' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>Remove all</text>
+<rect x='536' y='162' width='140' height='46' fill='#343848' rx='8' />
+<text x='606.0' y='192.2' font-size='20' fill='#FFFFFF' text-anchor='middle' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>Keep them</text>
+<rect x='584' y='224' width='96' height='34' fill='#0096E6' rx='4' />
+<text x='632.0' y='246.04' font-size='14' fill='#FFFFFF' text-anchor='middle' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>Back</text>
+<text x='368' y='284' font-size='14' fill='#333333' text-anchor='start' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>2  New patient: keep or remove the old nights</text>
+<rect x='712' y='24' width='320' height='240' fill='#1C1E28' rx='0' stroke='#000' stroke-width='1'/>
+<rect x='712' y='24' width='320' height='34' fill='#12121A' rx='0' />
+<text x='722' y='46' font-size='16' fill='#FFFFFF' text-anchor='start' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>SleepCYD</text>
+<circle cx='1010' cy='41' r='13' fill='#343848'/>
+<text x='1010' y='47' font-size='16' fill='#FFFFFF' text-anchor='middle' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>⚙</text>
+<text x='986' y='46' font-size='14' fill='#3CC85A' text-anchor='end' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>Farjana</text>
+<text x='724' y='84' font-size='20' fill='#FFFFFF' text-anchor='start' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>Turn on the WatchPAT</text>
+<circle cx='736' cy='112' r='12' fill='#0096E6'/>
+<text x='736' y='117' font-size='14' fill='#FFFFFF' text-anchor='middle' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>1</text>
+<text x='758' y='118' font-size='16' fill='#FFFFFF' text-anchor='start' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>Battery in, or pull its tab</text>
+<circle cx='736' cy='144' r='12' fill='#0096E6'/>
+<text x='736' y='149' font-size='14' fill='#FFFFFF' text-anchor='middle' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>2</text>
+<text x='758' y='150' font-size='16' fill='#FFFFFF' text-anchor='start' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>Wait for its light to blink</text>
+<circle cx='736' cy='176' r='12' fill='#0096E6'/>
+<text x='736' y='181' font-size='14' fill='#FFFFFF' text-anchor='middle' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>3</text>
+<text x='758' y='182' font-size='16' fill='#FFFFFF' text-anchor='start' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>Keep it near this screen</text>
+<text x='724' y='211' font-size='14' fill='#0096E6' text-anchor='start' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>Scanning for the WatchPAT...</text>
+<rect x='720' y='220' width='150' height='38' fill='#343848' rx='4' />
+<text x='795.0' y='244.04' font-size='14' fill='#FFFFFF' text-anchor='middle' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>Change patient</text>
+<rect x='928' y='220' width='96' height='38' fill='#343848' rx='4' />
+<text x='976.0' y='244.04' font-size='14' fill='#FFFFFF' text-anchor='middle' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>Status</text>
+<text x='712' y='284' font-size='14' fill='#333333' text-anchor='start' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>3  Turn on the WatchPAT (scanning)</text>
+<rect x='1056' y='24' width='320' height='240' fill='#1C1E28' rx='0' stroke='#000' stroke-width='1'/>
+<rect x='1056' y='24' width='320' height='34' fill='#12121A' rx='0' />
+<text x='1066' y='46' font-size='16' fill='#FFFFFF' text-anchor='start' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>Start sleep</text>
+<circle cx='1354' cy='41' r='13' fill='#343848'/>
+<text x='1354' y='47' font-size='16' fill='#FFFFFF' text-anchor='middle' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>⚙</text>
+<text x='1068' y='76' font-size='14' fill='#3CC85A' text-anchor='start' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>WatchPAT 120329362 connected</text>
+<rect x='1068' y='83' width='18' height='18' fill='#3CC85A' rx='4' stroke='#3CC85A' stroke-width='2'/>
+<polyline points='1072,92 1076,96 1083,88' fill='none' stroke='#000' stroke-width='2.5'/>
+<text x='1096' y='97' font-size='14' fill='#3CC85A' text-anchor='start' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>Chest sensor stuck on below the neck notch</text>
+<rect x='1068' y='110' width='18' height='18' fill='#3CC85A' rx='4' stroke='#3CC85A' stroke-width='2'/>
+<polyline points='1072,119 1076,123 1083,115' fill='none' stroke='#000' stroke-width='2.5'/>
+<text x='1096' y='124' font-size='14' fill='#3CC85A' text-anchor='start' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>WatchPAT on the wrist of the other hand</text>
+<rect x='1068' y='137' width='18' height='18' fill='#3CC85A' rx='4' stroke='#3CC85A' stroke-width='2'/>
+<polyline points='1072,146 1076,150 1083,142' fill='none' stroke='#000' stroke-width='2.5'/>
+<text x='1096' y='151' font-size='14' fill='#3CC85A' text-anchor='start' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>Finger probe pushed on (not the thumb)</text>
+<rect x='1068' y='164' width='18' height='18' fill='#343848' rx='4' stroke='#969BAA' stroke-width='2'/>
+<text x='1096' y='178' font-size='14' fill='#FFFFFF' text-anchor='start' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>SleepCYD plugged into power</text>
+<text x='1068' y='202' font-size='12' fill='#969BAA' text-anchor='start' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>Tick the four points, then Start.</text>
+<rect x='1068' y='210' width='296' height='48' fill='#2A6B3A' rx='8' />
+<text x='1216.0' y='241.2' font-size='20' fill='#8A8A8A' text-anchor='middle' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>Start sleep</text>
+<text x='1056' y='284' font-size='14' fill='#333333' text-anchor='start' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>4  Start sleep: the checklist</text>
+<rect x='24' y='318' width='320' height='240' fill='#1C1E28' rx='0' stroke='#000' stroke-width='1'/>
+<rect x='24' y='318' width='320' height='34' fill='#12121A' rx='0' />
+<text x='34' y='340' font-size='16' fill='#FFFFFF' text-anchor='start' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>Receiving data</text>
+<circle cx='322' cy='335' r='13' fill='#343848'/>
+<text x='322' y='341' font-size='16' fill='#FFFFFF' text-anchor='middle' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>⚙</text>
+<text x='300' y='341' font-size='16' fill='#3CC85A' text-anchor='end' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>4.3 MB</text>
+<text x='184' y='375' font-size='14' fill='#E6A020' text-anchor='middle' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>Receiving data</text>
+<text x='184' y='430' font-size='48' fill='#FFFFFF' text-anchor='middle' font-weight='bold' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>02:07:41</text>
+<text x='184' y='458' font-size='16' fill='#969BAA' text-anchor='middle' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>Farjana</text>
+<rect x='84' y='468' width='200' height='54' fill='#E63C46' rx='8' />
+<text x='184.0' y='502.2' font-size='20' fill='#FFFFFF' text-anchor='middle' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>Stop</text>
+<rect x='32' y='530' width='70' height='26' fill='#343848' rx='4' />
+<text x='67.0' y='547.32' font-size='12' fill='#FFFFFF' text-anchor='middle' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>Status</text>
+<text x='24' y='578' font-size='14' fill='#333333' text-anchor='start' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>5  Receiving data, all night</text>
+<rect x='368' y='318' width='320' height='240' fill='#1C1E28' rx='0' stroke='#000' stroke-width='1'/>
+<rect x='368' y='318' width='320' height='34' fill='#12121A' rx='0' />
+<text x='378' y='340' font-size='16' fill='#FFFFFF' text-anchor='start' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>Receiving data</text>
+<circle cx='666' cy='335' r='13' fill='#343848'/>
+<text x='666' y='341' font-size='16' fill='#FFFFFF' text-anchor='middle' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>⚙</text>
+<text x='644' y='341' font-size='16' fill='#3CC85A' text-anchor='end' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>4.3 MB</text>
+<text x='528' y='375' font-size='14' fill='#E6A020' text-anchor='middle' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>Receiving data</text>
+<text x='528' y='430' font-size='48' fill='#FFFFFF' text-anchor='middle' font-weight='bold' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>02:07:41</text>
+<text x='528' y='458' font-size='16' fill='#969BAA' text-anchor='middle' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>Farjana</text>
+<rect x='428' y='468' width='200' height='54' fill='#E63C46' rx='8' />
+<text x='528.0' y='502.2' font-size='20' fill='#FFFFFF' text-anchor='middle' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>Stop</text>
+<rect x='376' y='530' width='70' height='26' fill='#343848' rx='4' />
+<text x='411.0' y='547.32' font-size='12' fill='#FFFFFF' text-anchor='middle' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>Status</text>
+<rect x='368' y='318' width='320' height='240' fill='#000000' rx='0' opacity='0.45'/>
+<rect x='380' y='360' width='296' height='156' fill='#1C1E28' rx='6' stroke='#E6A020' stroke-width='2'/>
+<text x='390' y='388' font-size='20' fill='#E6A020' text-anchor='start' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>End the session?</text>
+<text x='390' y='413' font-size='14' fill='#FFFFFF' text-anchor='start' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>The WatchPAT reported the end of the test.</text>
+<text x='390' y='450' font-size='12' fill='#5A5E6E' text-anchor='start' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>Ends by itself in 4:52</text>
+<rect x='390' y='460' width='140' height='42' fill='#E63C46' rx='4' />
+<text x='460.0' y='486.04' font-size='14' fill='#FFFFFF' text-anchor='middle' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>End session</text>
+<rect x='540' y='460' width='124' height='42' fill='#343848' rx='4' />
+<text x='602.0' y='486.04' font-size='14' fill='#FFFFFF' text-anchor='middle' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>Continue</text>
+<text x='368' y='578' font-size='14' fill='#333333' text-anchor='start' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>6  End the session?</text>
+<rect x='712' y='318' width='320' height='240' fill='#1C1E28' rx='0' stroke='#000' stroke-width='1'/>
+<text x='724' y='340' font-size='16' fill='#FFFFFF' text-anchor='start' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>Scan to open the report</text>
+<rect x='726' y='350' width='124' height='124' fill='#FFFFFF' rx='0' />
+<rect x='730.0' y='354.0' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='735.5' y='354.0' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='741.0' y='354.0' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='746.6' y='354.0' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='752.1' y='354.0' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='757.6' y='354.0' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='763.1' y='354.0' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='768.7' y='354.0' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='774.2' y='354.0' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='785.2' y='354.0' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='796.3' y='354.0' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='801.8' y='354.0' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='807.3' y='354.0' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='812.9' y='354.0' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='818.4' y='354.0' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='823.9' y='354.0' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='829.4' y='354.0' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='835.0' y='354.0' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='840.5' y='354.0' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='730.0' y='359.5' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='763.1' y='359.5' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='774.2' y='359.5' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='779.7' y='359.5' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='785.2' y='359.5' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='790.8' y='359.5' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='796.3' y='359.5' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='807.3' y='359.5' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='840.5' y='359.5' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='730.0' y='365.0' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='741.0' y='365.0' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='746.6' y='365.0' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='752.1' y='365.0' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='763.1' y='365.0' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='768.7' y='365.0' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='774.2' y='365.0' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='796.3' y='365.0' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='807.3' y='365.0' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='818.4' y='365.0' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='823.9' y='365.0' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='829.4' y='365.0' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='840.5' y='365.0' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='730.0' y='370.6' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='741.0' y='370.6' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='746.6' y='370.6' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='752.1' y='370.6' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='763.1' y='370.6' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='768.7' y='370.6' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='779.7' y='370.6' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='785.2' y='370.6' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='790.8' y='370.6' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='796.3' y='370.6' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='807.3' y='370.6' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='818.4' y='370.6' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='823.9' y='370.6' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='829.4' y='370.6' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='840.5' y='370.6' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='730.0' y='376.1' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='741.0' y='376.1' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='746.6' y='376.1' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='752.1' y='376.1' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='763.1' y='376.1' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='768.7' y='376.1' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='785.2' y='376.1' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='796.3' y='376.1' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='801.8' y='376.1' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='807.3' y='376.1' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='818.4' y='376.1' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='823.9' y='376.1' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='829.4' y='376.1' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='840.5' y='376.1' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='730.0' y='381.6' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='763.1' y='381.6' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='768.7' y='381.6' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='779.7' y='381.6' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='785.2' y='381.6' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='801.8' y='381.6' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='807.3' y='381.6' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='840.5' y='381.6' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='730.0' y='387.1' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='735.5' y='387.1' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='741.0' y='387.1' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='746.6' y='387.1' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='752.1' y='387.1' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='757.6' y='387.1' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='763.1' y='387.1' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='779.7' y='387.1' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='807.3' y='387.1' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='812.9' y='387.1' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='818.4' y='387.1' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='823.9' y='387.1' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='829.4' y='387.1' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='835.0' y='387.1' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='840.5' y='387.1' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='730.0' y='392.7' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='741.0' y='392.7' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='746.6' y='392.7' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='757.6' y='392.7' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='768.7' y='392.7' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='796.3' y='392.7' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='730.0' y='398.2' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='757.6' y='398.2' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='763.1' y='398.2' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='774.2' y='398.2' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='785.2' y='398.2' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='790.8' y='398.2' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='796.3' y='398.2' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='807.3' y='398.2' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='812.9' y='398.2' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='818.4' y='398.2' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='829.4' y='398.2' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='835.0' y='398.2' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='746.6' y='403.7' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='752.1' y='403.7' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='757.6' y='403.7' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='774.2' y='403.7' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='779.7' y='403.7' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='785.2' y='403.7' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='790.8' y='403.7' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='807.3' y='403.7' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='812.9' y='403.7' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='818.4' y='403.7' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='823.9' y='403.7' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='746.6' y='409.2' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='774.2' y='409.2' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='779.7' y='409.2' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='785.2' y='409.2' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='796.3' y='409.2' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='801.8' y='409.2' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='807.3' y='409.2' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='812.9' y='409.2' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='818.4' y='409.2' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='823.9' y='409.2' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='829.4' y='409.2' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='835.0' y='409.2' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='840.5' y='409.2' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='730.0' y='414.8' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='735.5' y='414.8' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='752.1' y='414.8' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='757.6' y='414.8' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='763.1' y='414.8' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='768.7' y='414.8' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='774.2' y='414.8' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='801.8' y='414.8' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='807.3' y='414.8' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='812.9' y='414.8' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='818.4' y='414.8' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='829.4' y='414.8' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='835.0' y='414.8' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='735.5' y='420.3' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='746.6' y='420.3' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='774.2' y='420.3' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='779.7' y='420.3' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='785.2' y='420.3' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='807.3' y='420.3' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='812.9' y='420.3' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='735.5' y='425.8' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='746.6' y='425.8' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='752.1' y='425.8' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='757.6' y='425.8' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='763.1' y='425.8' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='768.7' y='425.8' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='785.2' y='425.8' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='807.3' y='425.8' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='812.9' y='425.8' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='818.4' y='425.8' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='823.9' y='425.8' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='829.4' y='425.8' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='730.0' y='431.3' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='735.5' y='431.3' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='741.0' y='431.3' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='746.6' y='431.3' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='752.1' y='431.3' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='757.6' y='431.3' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='763.1' y='431.3' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='790.8' y='431.3' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='823.9' y='431.3' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='835.0' y='431.3' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='730.0' y='436.9' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='763.1' y='436.9' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='774.2' y='436.9' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='779.7' y='436.9' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='796.3' y='436.9' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='801.8' y='436.9' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='807.3' y='436.9' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='823.9' y='436.9' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='730.0' y='442.4' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='741.0' y='442.4' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='746.6' y='442.4' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='752.1' y='442.4' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='763.1' y='442.4' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='768.7' y='442.4' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='779.7' y='442.4' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='785.2' y='442.4' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='812.9' y='442.4' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='829.4' y='442.4' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='835.0' y='442.4' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='840.5' y='442.4' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='730.0' y='447.9' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='741.0' y='447.9' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='746.6' y='447.9' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='752.1' y='447.9' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='763.1' y='447.9' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='768.7' y='447.9' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='779.7' y='447.9' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='785.2' y='447.9' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='790.8' y='447.9' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='801.8' y='447.9' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='823.9' y='447.9' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='730.0' y='453.4' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='741.0' y='453.4' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='746.6' y='453.4' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='752.1' y='453.4' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='763.1' y='453.4' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='774.2' y='453.4' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='779.7' y='453.4' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='785.2' y='453.4' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='790.8' y='453.4' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='801.8' y='453.4' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='823.9' y='453.4' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='730.0' y='459.0' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='763.1' y='459.0' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='768.7' y='459.0' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='779.7' y='459.0' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='785.2' y='459.0' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='818.4' y='459.0' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='730.0' y='464.5' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='735.5' y='464.5' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='741.0' y='464.5' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='746.6' y='464.5' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='752.1' y='464.5' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='757.6' y='464.5' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='763.1' y='464.5' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='807.3' y='464.5' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='829.4' y='464.5' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='835.0' y='464.5' width='5.7' height='5.7' fill='#000000' rx='0' />
+<rect x='840.5' y='464.5' width='5.7' height='5.7' fill='#000000' rx='0' />
+<text x='788' y='490' font-size='12' fill='#969BAA' text-anchor='middle' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>http://192.168.1.82/</text>
+<text x='788' y='504' font-size='11' fill='#5A5E6E' text-anchor='middle' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>phone on the same Wi-Fi</text>
+<text x='898' y='362' font-size='14' fill='#FFFFFF' text-anchor='start' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>This night</text>
+<text x='898' y='384' font-size='12' fill='#969BAA' text-anchor='start' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>6.1 h recorded</text>
+<text x='898' y='400' font-size='12' fill='#969BAA' text-anchor='start' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>pAHI 40.9/h (severe)</text>
+<text x='898' y='416' font-size='12' fill='#969BAA' text-anchor='start' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>SpO2 87.4 %, low 67 %</text>
+<text x='898' y='432' font-size='12' fill='#969BAA' text-anchor='start' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>Pulse 82 bpm (42 to 140)</text>
+<text x='898' y='448' font-size='12' fill='#969BAA' text-anchor='start' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>Drops 23, ODI 3.8/h</text>
+<text x='898' y='464' font-size='12' fill='#969BAA' text-anchor='start' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>On the back 95 %</text>
+<text x='724' y='539' font-size='14' fill='#E6A020' text-anchor='start' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>Closes in 4:38</text>
+<rect x='918' y='514' width='106' height='40' fill='#0096E6' rx='8' />
+<text x='971.0' y='541.2' font-size='20' fill='#FFFFFF' text-anchor='middle' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>Close</text>
+<text x='712' y='578' font-size='14' fill='#333333' text-anchor='start' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>7  The report: QR code to the phone page</text>
+<rect x='1056' y='318' width='320' height='240' fill='#1C1E28' rx='0' stroke='#000' stroke-width='1'/>
+<rect x='1056' y='318' width='320' height='34' fill='#12121A' rx='0' />
+<text x='1066' y='340' font-size='16' fill='#FFFFFF' text-anchor='start' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>Settings</text>
+<rect x='1302' y='322' width='66' height='26' fill='#0096E6' rx='4' />
+<text x='1335.0' y='340.04' font-size='14' fill='#FFFFFF' text-anchor='middle' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>Back</text>
+<rect x='1056' y='352' width='320' height='34' fill='#12121A' rx='0' />
+<text x='1096' y='374' font-size='14' fill='#969BAA' text-anchor='middle' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>Patient</text>
+<text x='1176' y='374' font-size='14' fill='#969BAA' text-anchor='middle' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>Wi-Fi</text>
+<text x='1256' y='374' font-size='14' fill='#969BAA' text-anchor='middle' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>Nights</text>
+<text x='1336' y='374' font-size='14' fill='#FFFFFF' text-anchor='middle' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>Device</text>
+<rect x='1296' y='383' width='80' height='3' fill='#0096E6' rx='0' />
+<rect x='1064' y='394' width='144' height='36' fill='#343848' rx='4' />
+<text x='1136.0' y='417.04' font-size='14' fill='#FFFFFF' text-anchor='middle' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>Date &amp; time</text>
+<rect x='1216' y='394' width='144' height='36' fill='#343848' rx='4' />
+<text x='1288.0' y='417.04' font-size='14' fill='#FFFFFF' text-anchor='middle' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>Calibrate touch</text>
+<rect x='1064' y='438' width='144' height='36' fill='#E63C46' rx='4' />
+<text x='1136.0' y='461.04' font-size='14' fill='#FFFFFF' text-anchor='middle' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>Reset data</text>
+<rect x='1216' y='438' width='144' height='36' fill='#343848' rx='4' />
+<text x='1288.0' y='461.04' font-size='14' fill='#FFFFFF' text-anchor='middle' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>Restart</text>
+<rect x='1064' y='482' width='144' height='36' fill='#343848' rx='4' />
+<text x='1136.0' y='505.04' font-size='14' fill='#FFFFFF' text-anchor='middle' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>Status &amp; log</text>
+<text x='1064' y='544' font-size='13' fill='#FFFFFF' text-anchor='start' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>Demo mode  (replay a recorded night)</text>
+<rect x='1306' y='526' width='54' height='28' fill='#343848' rx='14' />
+<circle cx='1320' cy='540' r='11' fill='#FFFFFF'/>
+<text x='1056' y='578' font-size='14' fill='#333333' text-anchor='start' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>8  Settings (gear on every screen)</text>
+</svg>
