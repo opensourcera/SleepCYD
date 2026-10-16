@@ -15,10 +15,11 @@ and reads the report over breakfast.
 
 ## See it in action
 
-<a href="docs/videos/sleepcyd-demo.mp4"><img src="docs/videos/sleepcyd-demo-poster.jpg" alt="SleepCYD demo video: the patient screen, the name keyboard, the checklist and the night report on the Cheap Yellow Display" width="640"></a>
+<img src="docs/videos/sleepcyd-demo.gif" alt="SleepCYD demo on the Cheap Yellow Display: the patient screen, the name keyboard, the date of birth, the checklist and the night report" width="640">
 
-A 1 minute 22 second walkthrough on the real board in demo mode: choosing the patient, entering a name on the touch
-keyboard, the checklist, and the report. Click the picture to play the video ([MP4, 720p](docs/videos/sleepcyd-demo.mp4)).
+The board in demo mode, played at 3x speed: choosing the patient, entering a name on the touch keyboard, the date of
+birth, the checklist, and the report. The full recording at normal speed is available as an
+[MP4 download (1:22, 720p, 11 MB)](https://github.com/opensourcera/SleepCYD/raw/main/docs/videos/sleepcyd-demo.mp4).
 
 ## Why this project exists
 
