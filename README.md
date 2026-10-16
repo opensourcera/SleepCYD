@@ -164,6 +164,12 @@ Three forms of the same analysis (`analysis.h`, streamed packet by packet, the s
 - **On the Nidra site**: the raw recording is uploaded and the site builds its own report; the device shows a second QR
   code pointing at it.
 
+<img src="docs/images/report-page.jpg" alt="The report page served by the board after scanning the QR code: cards with the apnea index, SpO2, pulse, oxygen drops and position, per-minute charts, and the download links" width="640">
+
+The page above is what the phone shows after scanning the QR code: it comes straight from the web server inside the
+board, no internet involved. This one is the demo night: 6.1 hours, pAHI 40.9 (severe), SpO2 average 87.4 % with a low
+of 67 %, 23 oxygen drops, 94 % of the night on the back, and the recording itself one tap away.
+
 The apnea index follows the PAT method in a simplified form: an event starts when the PAT amplitude falls to 70 % of its
 baseline and ends when it recovers; the oxygen drop and the pulse rise during the event make it an apnea, a hypopnea or a
 RERA. pAHI = (apneas + hypopneas) per hour, severity normal < 5, mild < 15, moderate < 30, severe above. The rules, the
