@@ -91,6 +91,16 @@ issue: every reused unit teaches something.
   its battery or pulling the tab, and then advertises as `ITAMAR_<serial in hex>`.
 - Optional: a 2.4 GHz Wi-Fi network for the phone page and the uploads, and a Nidra site to receive the nights.
 
+<img src="docs/images/watchpat-worn.jpg" alt="A WatchPAT ONE worn on the wrist, its finger probe on the index finger" width="280" align="right">
+
+This is how the WatchPAT ONE is worn: the unit on the wrist of the non-dominant hand, like a watch, and the finger probe
+pushed onto a finger (any finger but the thumb). The third part, the chest sensor, is not in the picture: it is the cable
+leaving the top of the unit, and its patch sticks on the skin just below the notch at the base of the neck, where it
+picks up snoring, breathing effort and body position. The checklist on the Start screen walks through these three
+points plus the charger for SleepCYD itself.
+
+<br clear="all">
+
 ## How a night goes
 
 ![The eight screens of a night: patient choice, new patient, turn on the WatchPAT, checklist, receiving data, end prompt, QR report, settings](docs/images/screens.svg)
