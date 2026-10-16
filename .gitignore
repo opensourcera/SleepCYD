@@ -1,0 +1,13 @@
+# arduino-cli output
+build/
+build_*/
+# nights recorded or downloaded on the PC (large, personal)
+server/
+samples/*.dat.bak
+# python
+__pycache__/
+*.pyc
+# editors
+.vs/
+.vscode/
+*.swp
