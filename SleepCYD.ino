@@ -231,7 +231,8 @@ static lv_obj_t *bigbutton(lv_obj_t *parent, const char *txt, int x, int y, int 
 static void title_tap_cb(lv_event_t *e);
 static lv_obj_t *scr_home, *scr_settings = NULL;
 static lv_obj_t *scr_welcome = NULL, *scr_turnon = NULL, *lbl_to_state = NULL;   // patient choice at boot; "turn on the WatchPAT" (scanning)
-static lv_obj_t *lbl_hib = NULL; static void hib_text();   // the hibernate countdown in the top bar of the patient screen
+static lv_obj_t *lbl_hib = NULL, *lbl_hib_to = NULL; static void hib_text();   // the hibernate countdown in the top bar of the patient and turn-on screens
+static lv_obj_t *hib_label(lv_obj_t *scr) { lv_obj_t *l = label(scr, "", &lv_font_montserrat_12, C_AMBER, 96, 3); lv_obj_set_width(l, 182); lv_obj_set_style_text_align(l, LV_TEXT_ALIGN_RIGHT, 0); return l; }
 static void settings_cb(lv_event_t *e); static void welcome_show(); static void welcome_leave(); static void turnon_show();
 static void end_prompt(const char *why, int auto_s); static void gear(lv_obj_t *scr); static void drop_screen(lv_obj_t *s); static void sim_start(); static void demo_start();
 #define DEMO_PATH "/DEMO.DAT"                     // a recorded night at the card root (outside /SLEEP: not listed, not reset); see README "Demo mode"
@@ -754,7 +755,7 @@ static void welcome_old_cb(lv_event_t *e) { turnon_show(); }
 static void welcome_show() {
   if (!scr_welcome) {
     scr_welcome = lv_obj_create(NULL); lv_obj_set_style_bg_color(scr_welcome, C_PANEL, 0); topbar(scr_welcome, "SleepCYD"); gear(scr_welcome);
-    if (cfg_hib) { lbl_hib = label(scr_welcome, "", &lv_font_montserrat_12, C_AMBER, 96, 3); lv_obj_set_width(lbl_hib, 182); lv_obj_set_style_text_align(lbl_hib, LV_TEXT_ALIGN_RIGHT, 0); hib_text(); }
+    if (cfg_hib) { lbl_hib = hib_label(scr_welcome); hib_text(); }
     label(scr_welcome, "Who is sleeping tonight?", &lv_font_montserrat_16, lv_color_white(), 12, TOP_H + 10);
     bigbutton(scr_welcome, "New patient", 12, TOP_H + 38, 296, 50, C_ACCENT, welcome_new_cb, NULL);
     if (cfg_patient.length()) {
@@ -777,6 +778,7 @@ static void bullet(lv_obj_t *scr, int n, const char *txt, int y) {   // a number
 }
 static void build_turnon() {
   scr_turnon = lv_obj_create(NULL); lv_obj_set_style_bg_color(scr_turnon, C_PANEL, 0); topbar(scr_turnon, "SleepCYD"); gear(scr_turnon);
+  lbl_hib_to = hib_label(scr_turnon);                // the hibernate countdown; empty while the switch is off
   lbl_to_who = label(scr_turnon, "", &lv_font_montserrat_14, C_GREEN, 0, 0); lv_obj_align(lbl_to_who, LV_ALIGN_TOP_RIGHT, -46, 10);   // the patient, in the top bar
   label(scr_turnon, "Turn on the WatchPAT", &lv_font_montserrat_20, lv_color_white(), 12, TOP_H + 8);
   bullet(scr_turnon, 1, "Battery in, or pull its tab", TOP_H + 42);
@@ -1203,25 +1205,28 @@ static void nights_fill(lv_obj_t *pg) {              // the Nights tab: up to fi
 }
 // ---------------------------------------------------------------- hibernate (Settings > Device)
 // With the switch on, the board goes to ESP32 deep sleep after HIB_IDLE_S seconds without a touch while it has nothing to
-// do: on the patient screen, in Settings or on the Status screen, with no sensor connected and no scan running. Asleep,
-// only the pen interrupt of the touch controller (GPIO 36, an RTC pin) stays armed: a touch on the screen wakes the board,
-// which boots again from scratch (the settings are in NVS, the recordings on the card, the clock is kept by the RTC). A
-// night that is being recorded is never interrupted: the recorder is not idle then.
+// do: on the patient screen, on the turn-on screen while no sensor has been found, in Settings or on the Status screen.
+// Asleep, only the pen interrupt of the touch controller (GPIO 36, an RTC pin) stays armed: a touch on the screen wakes
+// the board, which boots again from scratch (the settings are in NVS, the recordings on the card, the clock is kept by
+// the RTC). A night that is being recorded is never interrupted: the recorder is not idle then.
 #define HIB_IDLE_S 30
 static bool hib_idle() {
   if (!cfg_hib || calibrating || sim_active || wp_active || dlg) return false;
-  if (state != ST_IDLE && state != ST_WAIT) return false;        // scanning, connecting or connected: never
+  if (state == ST_FOUND || state == ST_CONNECTING || state == ST_CONNECTED) return false;   // a sensor is there: never
   lv_obj_t *a = lv_screen_active();
-  return a == scr_welcome || a == scr_settings || a == scr_home;
+  return a == scr_welcome || a == scr_turnon || a == scr_settings || a == scr_home;
 }
 static int hib_left() { int left = HIB_IDLE_S - (int)((millis() - hib_last_touch) / 1000); return left < 0 ? 0 : left; }
-static void hib_text() {                               // the notice in the top bar of the patient screen
-  if (!lbl_hib) return;
-  if (hib_idle()) lv_label_set_text_fmt(lbl_hib, "Device turns off in %d s\nSettings > Device turns it off", hib_left());
-  else lv_label_set_text(lbl_hib, "Hibernate is on\nSettings > Device turns it off");
+static void hib_text() {                               // the notice in the top bar of the patient and turn-on screens
+  char buf[72]; const char *t = "";
+  if (cfg_hib && hib_idle()) { snprintf(buf, sizeof buf, "Device turns off in %d s\nSettings > Device turns it off", hib_left()); t = buf; }
+  else if (cfg_hib) t = "Hibernate is on\nSettings > Device turns it off";
+  if (lbl_hib) lv_label_set_text(lbl_hib, t);
+  if (lbl_hib_to) lv_label_set_text(lbl_hib_to, t);
 }
 static void hib_enter() {
   Serial.printf("hibernate: %d s without a touch, deep sleep; a touch on the screen wakes the device\n", HIB_IDLE_S); Serial.flush();
+  if (state == ST_SCANNING) NimBLEDevice::getScan()->stop();
   if (NimBLEDevice::isInitialized()) NimBLEDevice::deinit(true);   // the controller must be off before deep sleep (ESP-IDF sleep modes)
   if (sd_ok) SD.end();
   spk_tone(0);
@@ -1263,7 +1268,7 @@ static void pt_new_cb(lv_event_t *e) { if (state == ST_CONNECTED) { if (lbl_form
 static void wifi_change_cb(lv_event_t *e) { session_close(); nv_put("wifiset", true); delay(100); ESP.restart(); }   // Wi-Fi setup is a separate boot without Bluetooth
 static void status_cb(lv_event_t *e) { lv_screen_load(scr_home); settings_leave(); }
 static void demo_sw_cb(lv_event_t *e) { cfg_demo = lv_obj_has_state(lv_event_get_target_obj(e), LV_STATE_CHECKED); nv_put("demo", cfg_demo); welcome_leave(); Serial.printf("demo mode %s\n", cfg_demo ? "on" : "off"); }
-static void hib_sw_cb(lv_event_t *e) { cfg_hib = lv_obj_has_state(lv_event_get_target_obj(e), LV_STATE_CHECKED); nv_put("hib", cfg_hib); hib_last_touch = millis(); welcome_leave(); Serial.printf("hibernate %s\n", cfg_hib ? "on" : "off"); }
+static void hib_sw_cb(lv_event_t *e) { cfg_hib = lv_obj_has_state(lv_event_get_target_obj(e), LV_STATE_CHECKED); nv_put("hib", cfg_hib); hib_last_touch = millis(); welcome_leave(); hib_text(); Serial.printf("hibernate %s\n", cfg_hib ? "on" : "off"); }
 static void toggle_row(lv_obj_t *pg, const char *txt, int lx, int sx, int y, bool on, lv_event_cb_t cb) {   // a labelled switch in the Device tab: label at lx, switch at sx
   label(pg, txt, &lv_font_montserrat_14, lv_color_white(), lx, y + 8);
   lv_obj_t *sw = lv_switch_create(pg); lv_obj_set_size(sw, 54, 28); lv_obj_set_pos(sw, sx, y);

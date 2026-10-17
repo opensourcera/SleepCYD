@@ -164,12 +164,12 @@ setup boot (serial `i`) and send `g http://<pc ip>:8098/<file>`; it downloads at
 ### Hibernate
 
 With the switch on, the board goes to deep sleep after 30 seconds without a touch whenever it has nothing to do: on the
-patient screen, in Settings or on the Status screen, with no sensor connected and no scan running. The patient screen
-counts down in its top bar: "Device turns off in 30 s, Settings > Device turns it off". Asleep, the screen and the
+patient screen, on the "Turn on the WatchPAT" screen while no sensor has been found, in Settings or on the Status
+screen. The patient and turn-on screens count down in their top bar: "Device turns off in 30 s, Settings > Device turns it off". Asleep, the screen and the
 backlight are off and the ESP32 draws a few microamps; what remains is the quiescent current of the board itself (its
 regulator and USB chip), well under what the screen alone used. Touching the screen wakes it: the firmware boots again
 from scratch, without the chirp, and the clock is kept. A night that is being recorded is never interrupted, and the
-countdown does not run while a sensor is connected, a scan is running or a dialog is open.
+countdown does not run once a sensor has been found, while one is connected, or while a dialog is open.
 
 ## The report
 
