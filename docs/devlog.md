@@ -18,7 +18,7 @@ be picked up later without the chat history.
 - `tools/scripts/flash_dual.py` (per-slot flashing), `tools/ble/find_device.py` (PC scan for a serial number).
 
 ## Device workflow (patient)
-Boot chirp -> scan -> "WatchPAT found, Serial 120329362" dialog (chirp; Connect, or Cancel for the manual list; auto-connect
+Boot chirp -> scan -> "WatchPAT found, Serial 123456789" dialog (chirp; Connect, or Cancel for the manual list; auto-connect
 after 30 s) -> Ready screen ("Start recording") -> recording screen: elapsed time, a green dot per sensor flashing on every
 packet, SpO2 / pulse / breathing / position / movement, SpO2 trend, saved MB -> "End recording" (tap twice) -> report screen ->
 automatic upload (summary JSON + the whole raw recording streamed from the card, with a percentage bar) -> "Congratulations! Data sent"
@@ -26,9 +26,9 @@ automatic upload (summary JSON + the whole raw recording streamed from the card,
 keyboard, 12 characters). Demo: tap the title 5 times. Serial commands are listed in README.md.
 
 ## Facts learned about the hardware and the device
-- WatchPAT ONE (catalog AC2110800, serial 120329362) advertises as `ITAMAR_072C1492N` (serial in hex, static random address
-  c9:16:56:44:75:77). It initiates the MTU exchange itself (client must not), sends about one 560-byte packet per second with
-  one second of all channels (oximetry A/B, PAT, chest at 100 Hz, 1 Hz metric, 5 Hz motion), and each packet must be ACKed.
+- WatchPAT ONE (catalog AC2110800) advertises as `ITAMAR_075BCD15N` (the serial in hex) from a static random address. It initiates the MTU exchange
+  itself (client must not), sends about one 560-byte packet per second with one second of all
+  channels (oximetry A/B, PAT, chest at 100 Hz, 1 Hz metric, 5 Hz motion), and each packet must be ACKed.
   After STOP_ACQUISITION + a new mode-1 session it answered END_OF_TEST (reason 1), dropped the N from its name and slept; the
   first session after waking it always worked. One night = about 2.06 MB per hour, 16.5 MB for 8 hours.
 - The touch panel on this board needs a firm press. The bit-banged XPT2046 driver must hold DIN low while reading the result
@@ -58,7 +58,7 @@ device a client of that API: base64 chunks of 300 packets streamed from the card
 First attempt failed: TLS "Memory allocation failed" with 46 KB free after Wi-Fi. Solved with an upload mode at boot (night
 marked in flash, restart without Bluetooth: 142 KB free, 70 KB largest block). Second bug: single-key Preferences writes
 outside cfg_load/cfg_save were silently lost (the handle is only open there) -> `nv_put()` helpers.
-Result: last night's 12.6 MB went up in 179 s as `CYD120329362_20261016_002449`, listed on
+Result: last night's 12.6 MB went up in 179 s as `CYD123456789_20261016_002449`, listed on
 `the Nidra site report page` with "View report" and "WatchPAT-style" built on the server.
 
 ## 2026-10-16, later: night mode (report on the device, web page, QR code)

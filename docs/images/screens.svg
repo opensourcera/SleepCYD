@@ -53,7 +53,7 @@
 <text x='1066' y='46' font-size='16' fill='#FFFFFF' text-anchor='start' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>Start sleep</text>
 <circle cx='1354' cy='41' r='13' fill='#343848'/>
 <text x='1354' y='47' font-size='16' fill='#FFFFFF' text-anchor='middle' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>⚙</text>
-<text x='1068' y='76' font-size='14' fill='#3CC85A' text-anchor='start' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>WatchPAT 120329362 connected</text>
+<text x='1068' y='76' font-size='14' fill='#3CC85A' text-anchor='start' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>WatchPAT 123456789 connected</text>
 <rect x='1068' y='83' width='18' height='18' fill='#3CC85A' rx='4' stroke='#3CC85A' stroke-width='2'/>
 <polyline points='1072,92 1076,96 1083,88' fill='none' stroke='#000' stroke-width='2.5'/>
 <text x='1096' y='97' font-size='14' fill='#3CC85A' text-anchor='start' font-weight='normal' font-family='Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif'>Chest sensor stuck on below the neck notch</text>
