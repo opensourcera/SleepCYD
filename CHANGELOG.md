@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased
+
+- Settings > Device > Hibernate: with the switch on, the board enters deep sleep after 30 seconds without a touch while
+  it is idle (patient screen, Settings, Status; no sensor connected, no scan running). The patient screen counts down in
+  its top bar. A touch on the screen wakes it; the boot after a wake skips the chirp. Recording nights are never
+  interrupted. NVS key `hib`.
+- The two `strftime` calls became `snprintf`: that libc function lives in instruction RAM (3 KB), which the deep sleep
+  code needs. Same output.
+
 ## 1.0 (2026-10-16)
 
 First release. Everything below was built and verified on one board and one WatchPAT ONE between 2026-10-15 and

@@ -31,7 +31,7 @@ static size_t nidra_b64(const uint8_t *in, size_t n, uint8_t *out) {
   return o;
 }
 static void nidra_hex(const uint8_t *d, char *out) { for (int i = 0; i < 32; i++) sprintf(out + 2 * i, "%02x", d[i]); out[64] = 0; }
-static String nidra_iso(time_t t) { struct tm tm; gmtime_r(&t, &tm); char b[40]; strftime(b, sizeof b, "%Y-%m-%dT%H:%M:%S.000+0000", &tm); return String(b); }
+static String nidra_iso(time_t t) { struct tm tm; gmtime_r(&t, &tm); char b[40]; snprintf(b, sizeof b, "%04u-%02u-%02uT%02u:%02u:%02u.000+0000", (unsigned)(tm.tm_year + 1900) % 10000, (unsigned)(tm.tm_mon + 1) % 100, (unsigned)tm.tm_mday % 100, (unsigned)tm.tm_hour % 100, (unsigned)tm.tm_min % 100, (unsigned)tm.tm_sec % 100); return String(b); }   // not strftime: IRAM, see Hibernate
 static String nidra_json_str(const String &s) { String o; for (size_t i = 0; i < s.length(); i++) { char c = s[i]; if (c == '"' || c == '\\') o += '\\'; if ((uint8_t)c >= 32) o += c; } return o; }
 static bool nidra_have_time() { return time(NULL) > 1700000000; }
 static bool nidra_sync_time() {                       // the board has no clock: take it from NTP once Wi-Fi is up

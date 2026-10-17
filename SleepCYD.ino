@@ -23,6 +23,8 @@
 #include <WiFiClientSecure.h>
 #include <NimBLEDevice.h>
 #include <esp_bt.h>
+#include <esp_sleep.h>                            // hibernate: deep sleep, wake on the touch pen interrupt
+#include <driver/gpio.h>                          // hold the backlight and amplifier pins while asleep
 #include <time.h>
 #include <sys/time.h>
 #include "ff.h"                                   // f_mkfs for a real FAT format of the card
@@ -49,6 +51,7 @@ CYD_FW_ID("SleepCYD", FW_VERSION);                // ID string the launcher find
 #define SD_MISO 19
 #define SD_MOSI 23
 #define SD_CS 5
+#define BL_PIN 21                                  // display backlight (TFT_BL in config/TFT_eSPI_User_Setup.h): off while hibernating
 
 // ---------------------------------------------------------------- colours
 #define C_TOPBAR  lv_color_hex(0x12121A)
@@ -132,6 +135,8 @@ static int cal_x0 = 419, cal_x1 = 3481, cal_y0 = 475, cal_y1 = 3225; static bool
 static bool calibrating = false; static volatile bool cal_pressed = false; static volatile int cal_raw_x = 0, cal_raw_y = 0;
 static int fake_x = 0, fake_y = 0; static uint32_t fake_until = 0;   // serial tap injection "P x,y"
 
+static uint32_t hib_last_touch = 0;                    // millis() of the last touch: the hibernate countdown (Settings > Device, hib_poll)
+
 static void touch_read(lv_indev_t *indev, lv_indev_data_t *data) {
   if (fake_until && (int32_t)(fake_until - millis()) > 0) { data->state = LV_INDEV_STATE_PRESSED; data->point.x = fake_x; data->point.y = fake_y; return; }
   fake_until = 0;
@@ -149,6 +154,7 @@ static void touch_read(lv_indev_t *indev, lv_indev_data_t *data) {
     x = constrain(x, 0, SCREEN_W - 1); y = constrain(y, 0, SCREEN_H - 1);
     if (!was_pressed) { Serial.printf("touch raw %d,%d z %d -> %d,%d\n", rx, ry, rz, x, y); was_pressed = true; }
     if (calibrating) { cal_raw_x = cal_swap ? ry : rx; cal_raw_y = cal_swap ? rx : ry; cal_pressed = true; data->state = LV_INDEV_STATE_RELEASED; return; }
+    hib_last_touch = millis();
     data->point.x = x; data->point.y = y; data->state = LV_INDEV_STATE_PRESSED;
   } else {
     data->state = LV_INDEV_STATE_RELEASED; was_pressed = false; st_n = 0;
@@ -166,6 +172,7 @@ static String cfg_last_addr;             // last device we connected to: reconne
 static int cfg_session = 0;              // last session number used
 static String cfg_dob;                    // date of birth YYYY-MM-DD
 static bool cfg_demo = false;             // Settings > Device > Demo mode: a simulated night instead of a WatchPAT
+static bool cfg_hib = false;              // Settings > Device > Hibernate: deep sleep after 30 s without a touch while idle; a touch wakes the board
 static String cfg_ssid, cfg_wpass, cfg_api, cfg_tok, cfg_patient;   // Wi-Fi, the Nidra API (serial w, u, t), the patient (letters and spaces, 12 characters at most)
 static void nv_put(const char *key, const String &v) { prefs.begin("sleep", false); prefs.putString(key, v); prefs.end(); }
 static void nv_put(const char *key, bool v) { prefs.begin("sleep", false); prefs.putBool(key, v); prefs.end(); }
@@ -174,7 +181,7 @@ static void nv_remove(const char *key) { prefs.begin("sleep", false); prefs.remo
 static void cfg_load() {
   prefs.begin("sleep", true);
   cfg_filter = prefs.getString("filter", "ITAMAR"); cfg_last_addr = prefs.getString("last", ""); cfg_session = prefs.getInt("sess", 0);
-  cfg_ssid = prefs.getString("ssid", ""); cfg_wpass = prefs.getString("wpass", ""); cfg_api = prefs.getString("api", ""); cfg_tok = prefs.getString("tok", ""); cfg_patient = prefs.getString("patient", ""); cfg_dob = prefs.isKey("dob") ? prefs.getString("dob", "") : ""; cfg_demo = prefs.getBool("demo", false); cfg_serial = prefs.getULong("serial", 0); if (prefs.isKey("tz")) cfg_tz = prefs.getString("tz", cfg_tz); pend_path = prefs.isKey("pend") ? prefs.getString("pend", "") : ""; pend_skip = prefs.getBool("pskip", false); pend_sent = prefs.getBool("psent", true); pend_rec = prefs.isKey("prec") ? prefs.getString("prec", "") : "";
+  cfg_ssid = prefs.getString("ssid", ""); cfg_wpass = prefs.getString("wpass", ""); cfg_api = prefs.getString("api", ""); cfg_tok = prefs.getString("tok", ""); cfg_patient = prefs.getString("patient", ""); cfg_dob = prefs.isKey("dob") ? prefs.getString("dob", "") : ""; cfg_demo = prefs.getBool("demo", false); cfg_hib = prefs.getBool("hib", false); cfg_serial = prefs.getULong("serial", 0); if (prefs.isKey("tz")) cfg_tz = prefs.getString("tz", cfg_tz); pend_path = prefs.isKey("pend") ? prefs.getString("pend", "") : ""; pend_skip = prefs.getBool("pskip", false); pend_sent = prefs.getBool("psent", true); pend_rec = prefs.isKey("prec") ? prefs.getString("prec", "") : "";
   cal_have = prefs.isKey("cx0"); cal_swap = prefs.getBool("cswap", false);
   cal_x0 = prefs.getInt("cx0", cal_x0); cal_x1 = prefs.getInt("cx1", cal_x1); cal_y0 = prefs.getInt("cy0", cal_y0); cal_y1 = prefs.getInt("cy1", cal_y1);
   prefs.end();
@@ -224,6 +231,7 @@ static lv_obj_t *bigbutton(lv_obj_t *parent, const char *txt, int x, int y, int 
 static void title_tap_cb(lv_event_t *e);
 static lv_obj_t *scr_home, *scr_settings = NULL;
 static lv_obj_t *scr_welcome = NULL, *scr_turnon = NULL, *lbl_to_state = NULL;   // patient choice at boot; "turn on the WatchPAT" (scanning)
+static lv_obj_t *lbl_hib = NULL; static void hib_text();   // the hibernate countdown in the top bar of the patient screen
 static void settings_cb(lv_event_t *e); static void welcome_show(); static void welcome_leave(); static void turnon_show();
 static void end_prompt(const char *why, int auto_s); static void gear(lv_obj_t *scr); static void drop_screen(lv_obj_t *s); static void sim_start(); static void demo_start();
 #define DEMO_PATH "/DEMO.DAT"                     // a recorded night at the card root (outside /SLEEP: not listed, not reset); see README "Demo mode"
@@ -705,7 +713,7 @@ static void patient_cb(lv_event_t *e) {
 static void gear(lv_obj_t *scr) { lv_obj_t *b = button(scr, LV_SYMBOL_SETTINGS, 284, 4, 28, 26, C_KEY, settings_cb, NULL); lv_obj_set_style_radius(b, 13, 0); lv_obj_set_ext_click_area(b, 6); }
 static void drop_screen(lv_obj_t *s) { if (dlg && lv_obj_get_screen(dlg) == s) dlg = NULL; lv_obj_delete(s); }   // a dialog on that screen dies with it
 static lv_obj_t *lbl_to_who = NULL, *scr_wipe = NULL;
-static void welcome_leave() { if (scr_welcome && lv_screen_active() != scr_welcome) { lv_obj_t *s = scr_welcome; scr_welcome = NULL; drop_screen(s); } }
+static void welcome_leave() { if (scr_welcome && lv_screen_active() != scr_welcome) { lv_obj_t *s = scr_welcome; scr_welcome = NULL; lbl_hib = NULL; drop_screen(s); } }
 static void wipe_leave() { lv_obj_t *s = scr_wipe; scr_wipe = NULL; if (s) drop_screen(s); }
 static int sd_wipe() {                               // every file in /SLEEP, a few at a time (deleting while listing skips entries)
   int n = 0; if (!sd_ok) return 0;
@@ -746,6 +754,7 @@ static void welcome_old_cb(lv_event_t *e) { turnon_show(); }
 static void welcome_show() {
   if (!scr_welcome) {
     scr_welcome = lv_obj_create(NULL); lv_obj_set_style_bg_color(scr_welcome, C_PANEL, 0); topbar(scr_welcome, "SleepCYD"); gear(scr_welcome);
+    if (cfg_hib) { lbl_hib = label(scr_welcome, "", &lv_font_montserrat_12, C_AMBER, 96, 3); lv_obj_set_width(lbl_hib, 182); lv_obj_set_style_text_align(lbl_hib, LV_TEXT_ALIGN_RIGHT, 0); hib_text(); }
     label(scr_welcome, "Who is sleeping tonight?", &lv_font_montserrat_16, lv_color_white(), 12, TOP_H + 10);
     bigbutton(scr_welcome, "New patient", 12, TOP_H + 38, 296, 50, C_ACCENT, welcome_new_cb, NULL);
     if (cfg_patient.length()) {
@@ -931,7 +940,7 @@ static void wp_begin(NimBLERemoteService *nus) {
   if (!wp_rx || !tx) { ulog("wp: NUS characteristics missing"); return; }
   wp_tx_handle = tx->getHandle(); wp_r.n = 0; wp_seq = 0; wp_pkts = wp_bytes = wp_crc_bad = wp_acks = 0; wp_retries = 0; wp_serial = 0; memset(&wp_c, 0, sizeof wp_c);
   time_t now = time(NULL); struct tm tm; localtime_r(&now, &tm); char day[8];   // YYMMDD_<serial>_NNN.DAT, NNN counts the day's recordings; 000000 when the date is unknown
-  if (now > 1700000000) strftime(day, sizeof day, "%y%m%d", &tm); else strcpy(day, "000000");
+  if (now > 1700000000) snprintf(day, sizeof day, "%02u%02u%02u", (unsigned)tm.tm_year % 100, (unsigned)(tm.tm_mon + 1) % 100, (unsigned)tm.tm_mday % 100); else strcpy(day, "000000");   // not strftime: it lives in IRAM (3 KB) and the deep sleep code of Hibernate needs that room
   for (int seq = 1; seq < 1000; seq++) { snprintf(wp_path, sizeof wp_path, "/SLEEP/%s_%lu_%03d.DAT", day, (unsigned long)wp_get_serial(), seq); if (!SD.exists(wp_path)) break; }
   wp_dat = SD.open(wp_path, FILE_WRITE);
   if (!wp_dat) { ulog("wp: cannot create %s", wp_path); return; }
@@ -1192,6 +1201,46 @@ static void nights_fill(lv_obj_t *pg) {              // the Nights tab: up to fi
   if (pend_path.length() && !pend_sent && is_nidra()) { button(pg, "Send the last night to the site", 0, y, 296, 30, C_GREEN, night_send_cb, NULL); y += 36; }
   label(pg, n ? "Tap a night: the device restarts, builds its report\nand shows a QR code that opens it on the phone." : "", &lv_font_montserrat_12, C_DIM, 0, y);
 }
+// ---------------------------------------------------------------- hibernate (Settings > Device)
+// With the switch on, the board goes to ESP32 deep sleep after HIB_IDLE_S seconds without a touch while it has nothing to
+// do: on the patient screen, in Settings or on the Status screen, with no sensor connected and no scan running. Asleep,
+// only the pen interrupt of the touch controller (GPIO 36, an RTC pin) stays armed: a touch on the screen wakes the board,
+// which boots again from scratch (the settings are in NVS, the recordings on the card, the clock is kept by the RTC). A
+// night that is being recorded is never interrupted: the recorder is not idle then.
+#define HIB_IDLE_S 30
+static bool hib_idle() {
+  if (!cfg_hib || calibrating || sim_active || wp_active || dlg) return false;
+  if (state != ST_IDLE && state != ST_WAIT) return false;        // scanning, connecting or connected: never
+  lv_obj_t *a = lv_screen_active();
+  return a == scr_welcome || a == scr_settings || a == scr_home;
+}
+static int hib_left() { int left = HIB_IDLE_S - (int)((millis() - hib_last_touch) / 1000); return left < 0 ? 0 : left; }
+static void hib_text() {                               // the notice in the top bar of the patient screen
+  if (!lbl_hib) return;
+  if (hib_idle()) lv_label_set_text_fmt(lbl_hib, "Device turns off in %d s\nSettings > Device turns it off", hib_left());
+  else lv_label_set_text(lbl_hib, "Hibernate is on\nSettings > Device turns it off");
+}
+static void hib_enter() {
+  Serial.printf("hibernate: %d s without a touch, deep sleep; a touch on the screen wakes the device\n", HIB_IDLE_S); Serial.flush();
+  if (NimBLEDevice::isInitialized()) NimBLEDevice::deinit(true);   // the controller must be off before deep sleep (ESP-IDF sleep modes)
+  if (sd_ok) SD.end();
+  spk_tone(0);
+  tft.writecommand(0x28); tft.writecommand(0x10); delay(120);    // ILI9341: display off, sleep in
+  digitalWrite(BL_PIN, LOW);
+  gpio_hold_en((gpio_num_t)BL_PIN); gpio_hold_en((gpio_num_t)AMP_EN_PIN); gpio_deep_sleep_hold_en();   // the backlight and the amplifier stay off while asleep
+  int x, y, z; xpt_read(x, y, z);                       // leaves the touch controller powered down with its pen interrupt armed
+  esp_sleep_enable_ext0_wakeup((gpio_num_t)T_IRQ, 0);  // PENIRQ goes low on a touch
+  esp_deep_sleep_start();
+}
+static void hib_poll() {                                // from loop(), twice a second
+  if (!cfg_hib) return;
+  hib_text();
+  if (hib_idle() && hib_left() == 0) hib_enter();
+}
+static void hib_wake_release() {                        // at boot: after a hibernate wake the held pins would stay frozen
+  gpio_deep_sleep_hold_dis(); gpio_hold_dis((gpio_num_t)BL_PIN); gpio_hold_dis((gpio_num_t)AMP_EN_PIN);
+}
+
 // settings: tabs Patient | Wi-Fi | Nights | Device, built when opened and freed on Back (the recording needs the memory)
 static int settings_from = 0;                        // 0 patient screen, 1 turn-on, 2 start sleep, 3 recording, 4 status
 static lv_obj_t *lbl_pt_name = NULL, *lbl_pt_dob = NULL;
@@ -1214,6 +1263,14 @@ static void pt_new_cb(lv_event_t *e) { if (state == ST_CONNECTED) { if (lbl_form
 static void wifi_change_cb(lv_event_t *e) { session_close(); nv_put("wifiset", true); delay(100); ESP.restart(); }   // Wi-Fi setup is a separate boot without Bluetooth
 static void status_cb(lv_event_t *e) { lv_screen_load(scr_home); settings_leave(); }
 static void demo_sw_cb(lv_event_t *e) { cfg_demo = lv_obj_has_state(lv_event_get_target_obj(e), LV_STATE_CHECKED); nv_put("demo", cfg_demo); welcome_leave(); Serial.printf("demo mode %s\n", cfg_demo ? "on" : "off"); }
+static void hib_sw_cb(lv_event_t *e) { cfg_hib = lv_obj_has_state(lv_event_get_target_obj(e), LV_STATE_CHECKED); nv_put("hib", cfg_hib); hib_last_touch = millis(); welcome_leave(); Serial.printf("hibernate %s\n", cfg_hib ? "on" : "off"); }
+static void toggle_row(lv_obj_t *pg, const char *txt, int y, bool on, lv_event_cb_t cb) {   // a labelled switch in the Device tab
+  label(pg, txt, &lv_font_montserrat_14, lv_color_white(), 0, y + 8);
+  lv_obj_t *sw = lv_switch_create(pg); lv_obj_set_size(sw, 54, 28); lv_obj_set_pos(sw, 242, y);
+  lv_obj_set_style_bg_color(sw, C_KEY, 0); lv_obj_set_style_bg_color(sw, C_GREEN, (lv_style_selector_t)LV_PART_INDICATOR | LV_STATE_CHECKED); lv_obj_set_style_bg_color(sw, lv_color_white(), LV_PART_KNOB);
+  if (on) lv_obj_add_state(sw, LV_STATE_CHECKED);
+  lv_obj_add_event_cb(sw, cb, LV_EVENT_VALUE_CHANGED, NULL);
+}
 static lv_obj_t *tab_btn(lv_obj_t *pg, const char *txt, int x, int y, int w, lv_color_t bg, lv_event_cb_t cb) { return button(pg, txt, x, y, w, 36, bg, cb, NULL); }
 static void build_settings() {
   scr_settings = lv_obj_create(NULL); lv_obj_set_style_bg_color(scr_settings, C_PANEL, 0); topbar(scr_settings, "Settings");
@@ -1248,13 +1305,10 @@ static void build_settings() {
   btn_format = tab_btn(pg[3], "Reset data", 0, 44, 144, C_RED, format_cb); tab_btn(pg[3], "Restart", 152, 44, 144, C_KEY, restart_cb);
   tab_btn(pg[3], "Status & log", 0, 88, 144, C_KEY, status_cb);
   if (launcher_has_other()) { char sw[48]; snprintf(sw, sizeof sw, "Switch to %s", launcher_other_name()); tab_btn(pg[3], sw, 152, 88, 144, C_KEY, switch_fw_cb); }
-  label(pg[3], "Demo mode  (simulated night, no WatchPAT)", &lv_font_montserrat_14, lv_color_white(), 0, 140);
-  lv_obj_t *sw = lv_switch_create(pg[3]); lv_obj_set_size(sw, 54, 28); lv_obj_set_pos(sw, 242, 132);
-  lv_obj_set_style_bg_color(sw, C_KEY, 0); lv_obj_set_style_bg_color(sw, C_GREEN, (lv_style_selector_t)LV_PART_INDICATOR | LV_STATE_CHECKED); lv_obj_set_style_bg_color(sw, lv_color_white(), LV_PART_KNOB);
-  if (cfg_demo) lv_obj_add_state(sw, LV_STATE_CHECKED);
-  lv_obj_add_event_cb(sw, demo_sw_cb, LV_EVENT_VALUE_CHANGED, NULL);
-  lbl_format = label(pg[3], "", &lv_font_montserrat_12, C_GREY, 0, 172); lv_obj_set_width(lbl_format, 296);
-  lbl_set_info = label(pg[3], "", &lv_font_montserrat_12, C_DIM, 0, 190); lv_obj_set_width(lbl_set_info, 296);
+  toggle_row(pg[3], "Demo mode  (simulated night, no WatchPAT)", 132, cfg_demo, demo_sw_cb);
+  toggle_row(pg[3], "Hibernate  (sleeps when idle, touch wakes)", 172, cfg_hib, hib_sw_cb);
+  lbl_format = label(pg[3], "", &lv_font_montserrat_12, C_GREY, 0, 212); lv_obj_set_width(lbl_format, 296);
+  lbl_set_info = label(pg[3], "", &lv_font_montserrat_12, C_DIM, 0, 230); lv_obj_set_width(lbl_set_info, 296);
 }
 static void settings_cb(lv_event_t *e) {
   lv_obj_t *a = lv_screen_active();
@@ -1661,6 +1715,9 @@ static void boot_time_sync() {                   // a few seconds of Wi-Fi at po
 // ---------------------------------------------------------------- setup / loop
 void setup() {
   Serial.begin(115200);
+  hib_wake_release();
+  bool woke = esp_sleep_get_wakeup_cause() == ESP_SLEEP_WAKEUP_EXT0;   // a touch on the screen ended a hibernate
+  if (woke) Serial.println("woke from hibernate by a touch");
   cfg_load();
   setenv("TZ", cfg_tz.c_str(), 1); tzset();
   spk_init();
@@ -1677,7 +1734,7 @@ void setup() {
   launcher_scan();                                 // so the settings screen can name the other slot
   build_home(); build_turnon(); build_ready(); build_dash(); lv_screen_load(scr_home);
   if (!cal_have) { cal_auto = true; cal_cb(NULL); }
-  launcher_begin(touch_pressed_raw, boot_beep);   // boot chirp, then touch during the splash to pick the other firmware slot
+  launcher_begin(touch_pressed_raw, woke ? NULL : boot_beep);   // boot chirp (not after a hibernate wake), then touch during the splash to pick the other firmware slot
   lv_timer_handler();
 
   rec_q = xQueueCreate(6, sizeof(Rec));            // 3 KB; the WatchPAT sends ~3 chunks per second
@@ -1687,6 +1744,7 @@ void setup() {
   ble_init();
   if (!sd_ok) ui_state("Insert an SD card and restart", C_RED);
   if (!calibrating) welcome_show();                // New patient | Same patient; scanning starts on the "turn on" screen
+  hib_last_touch = millis();
   Serial.printf("ready: SleepCYD %s, free heap %u\n", FW_VERSION, (unsigned)ESP.getFreeHeap());
 }
 
@@ -1733,7 +1791,7 @@ void loop() {
   }
   if (state == ST_SCANNING && millis() - state_t0 > 9000) { NimBLEDevice::getScan()->stop(); scan_done = true; }
   if (millis() - last_ui > 500) {
-    last_ui = millis(); ui_stats(); log_refresh();
+    last_ui = millis(); ui_stats(); log_refresh(); hib_poll();
     if (end_auto_at) { int left = (int32_t)(end_auto_at - millis()) / 1000; if (left <= 0) end_now_cb(NULL); else if (lbl_end_timer) lv_label_set_text_fmt(lbl_end_timer, "Ends by itself in %d:%02d", left / 60, left % 60); }
   }
   delay(5);

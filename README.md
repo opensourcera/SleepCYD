@@ -150,8 +150,8 @@ Settings has four tabs. **Patient**: name, date of birth, New patient. **Wi-Fi**
 Wi-Fi network" restarts the board without Bluetooth, lists the networks, takes the password on a full keyboard, tests the
 connection and saves. **Nights**: the last recordings on the card, each opening its report page again; "Send the last
 night". **Device**: date and time, touch calibration, Reset data (removes the recordings after a second tap), Restart,
-Status & log (the technical screen: state, counters, live log, device list, manual Scan and Disconnect), and the
-**Demo mode** switch.
+Status & log (the technical screen: state, counters, live log, device list, manual Scan and Disconnect), the
+**Demo mode** switch and the **Hibernate** switch.
 
 ### Demo mode
 
@@ -160,6 +160,16 @@ With the switch on, the patient screen leads straight to the checklist and Start
 synthetic hour is played instead. To put a night on the card, copy any recording to the card root as `DEMO.DAT`, or without
 removing the card: serve the file from a PC (`python -m http.server 8098` in its folder), restart the board into the Wi-Fi
 setup boot (serial `i`) and send `g http://<pc ip>:8098/<file>`; it downloads at about 500 KB/s.
+
+### Hibernate
+
+With the switch on, the board goes to deep sleep after 30 seconds without a touch whenever it has nothing to do: on the
+patient screen, in Settings or on the Status screen, with no sensor connected and no scan running. The patient screen
+counts down in its top bar: "Device turns off in 30 s, Settings > Device turns it off". Asleep, the screen and the
+backlight are off and the ESP32 draws a few microamps; what remains is the quiescent current of the board itself (its
+regulator and USB chip), well under what the screen alone used. Touching the screen wakes it: the firmware boots again
+from scratch, without the chirp, and the clock is kept. A night that is being recorded is never interrupted, and the
+countdown does not run while a sensor is connected, a scan is running or a dialog is open.
 
 ## The report
 

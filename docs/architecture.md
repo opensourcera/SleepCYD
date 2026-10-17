@@ -53,6 +53,11 @@ list of the Status screen is only rebuilt when that screen is visible.
 Touch input goes through a four-cross calibration stored in NVS (run at first boot) (Settings > Device > Calibrate), with a swap flag for
 boards whose controller is rotated. The serial command `P x,y` injects a tap for scripted tests.
 
+Hibernate (Settings > Device) uses the same touch controller: after 30 s without a touch while the recorder is idle,
+`hib_enter()` puts the panel to sleep, holds the backlight and amplifier pins low and high, and enters ESP32 deep sleep
+with the pen interrupt (GPIO 36, PENIRQ, an RTC pin) as the only wake source. The wake is a normal boot:
+`hib_wake_release()` frees the held pins first, and the launcher splash skips its chirp when the wake cause is that pin.
+
 ## Memory budget (measured)
 
 | Situation | Free heap |
@@ -75,7 +80,7 @@ is unknown. The time zone is a POSIX string in NVS (`tz`).
 ## NVS keys (namespace `sleep`)
 
 `filter`, `last` (remembered sensor address), `sess`, `serial`, `ssid`, `wpass`, `api`, `tok`, `patient`, `dob`, `tz`,
-`demo`, `pend`, `pskip`, `psent`, `prec` (the site's name for the pending night), `wifiset`, `cx0 cx1 cy0 cy1 cswap`
+`demo`, `hib`, `pend`, `pskip`, `psent`, `prec` (the site's name for the pending night), `wifiset`, `cx0 cx1 cy0 cy1 cswap`
 (touch calibration). The Wi-Fi of a previous firmware on the board (`cfg` namespace, `ssid`/`pass`) is reused when
 `ssid` is empty.
 
