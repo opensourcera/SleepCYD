@@ -1264,9 +1264,9 @@ static void wifi_change_cb(lv_event_t *e) { session_close(); nv_put("wifiset", t
 static void status_cb(lv_event_t *e) { lv_screen_load(scr_home); settings_leave(); }
 static void demo_sw_cb(lv_event_t *e) { cfg_demo = lv_obj_has_state(lv_event_get_target_obj(e), LV_STATE_CHECKED); nv_put("demo", cfg_demo); welcome_leave(); Serial.printf("demo mode %s\n", cfg_demo ? "on" : "off"); }
 static void hib_sw_cb(lv_event_t *e) { cfg_hib = lv_obj_has_state(lv_event_get_target_obj(e), LV_STATE_CHECKED); nv_put("hib", cfg_hib); hib_last_touch = millis(); welcome_leave(); Serial.printf("hibernate %s\n", cfg_hib ? "on" : "off"); }
-static void toggle_row(lv_obj_t *pg, const char *txt, int y, bool on, lv_event_cb_t cb) {   // a labelled switch in the Device tab
-  label(pg, txt, &lv_font_montserrat_14, lv_color_white(), 0, y + 8);
-  lv_obj_t *sw = lv_switch_create(pg); lv_obj_set_size(sw, 54, 28); lv_obj_set_pos(sw, 242, y);
+static void toggle_row(lv_obj_t *pg, const char *txt, int lx, int sx, int y, bool on, lv_event_cb_t cb) {   // a labelled switch in the Device tab: label at lx, switch at sx
+  label(pg, txt, &lv_font_montserrat_14, lv_color_white(), lx, y + 8);
+  lv_obj_t *sw = lv_switch_create(pg); lv_obj_set_size(sw, 54, 28); lv_obj_set_pos(sw, sx, y);
   lv_obj_set_style_bg_color(sw, C_KEY, 0); lv_obj_set_style_bg_color(sw, C_GREEN, (lv_style_selector_t)LV_PART_INDICATOR | LV_STATE_CHECKED); lv_obj_set_style_bg_color(sw, lv_color_white(), LV_PART_KNOB);
   if (on) lv_obj_add_state(sw, LV_STATE_CHECKED);
   lv_obj_add_event_cb(sw, cb, LV_EVENT_VALUE_CHANGED, NULL);
@@ -1305,10 +1305,10 @@ static void build_settings() {
   btn_format = tab_btn(pg[3], "Reset data", 0, 44, 144, C_RED, format_cb); tab_btn(pg[3], "Restart", 152, 44, 144, C_KEY, restart_cb);
   tab_btn(pg[3], "Status & log", 0, 88, 144, C_KEY, status_cb);
   if (launcher_has_other()) { char sw[48]; snprintf(sw, sizeof sw, "Switch to %s", launcher_other_name()); tab_btn(pg[3], sw, 152, 88, 144, C_KEY, switch_fw_cb); }
-  toggle_row(pg[3], "Demo mode  (simulated night, no WatchPAT)", 132, cfg_demo, demo_sw_cb);
-  toggle_row(pg[3], "Hibernate  (sleeps when idle, touch wakes)", 172, cfg_hib, hib_sw_cb);
-  lbl_format = label(pg[3], "", &lv_font_montserrat_12, C_GREY, 0, 212); lv_obj_set_width(lbl_format, 296);
-  lbl_set_info = label(pg[3], "", &lv_font_montserrat_12, C_DIM, 0, 230); lv_obj_set_width(lbl_set_info, 296);
+  toggle_row(pg[3], "Demo mode", 0, 86, 132, cfg_demo, demo_sw_cb);      // both switches on one row: the tab shows 164 px without scrolling
+  toggle_row(pg[3], "Hibernate", 152, 242, 132, cfg_hib, hib_sw_cb);
+  lbl_format = label(pg[3], "", &lv_font_montserrat_12, C_GREY, 0, 172); lv_obj_set_width(lbl_format, 296);
+  lbl_set_info = label(pg[3], "", &lv_font_montserrat_12, C_DIM, 0, 190); lv_obj_set_width(lbl_set_info, 296);
 }
 static void settings_cb(lv_event_t *e) {
   lv_obj_t *a = lv_screen_active();
